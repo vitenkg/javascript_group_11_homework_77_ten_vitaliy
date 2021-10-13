@@ -1,19 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const products = require('./app/products');
-const fileDb = require('./fileDb');
+const messages = require('./app/messages');
+const modules = require('./modules/ModMessage');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 
 const port = 8000;
 
-app.use('/products', products);
+app.use('/messages', messages);
 
-fileDb.init();
+modules.init();
 app.listen(port, () => {
-    console.log(`Server started on ${port} port!`);
+    console.log('Server started on ', port);
 });
