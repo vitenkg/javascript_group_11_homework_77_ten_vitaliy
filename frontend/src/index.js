@@ -5,10 +5,10 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import {Provider} from "react-redux";
 import App from './App';
-import productsReducer from "./store/reducers/productsReducer";
+import productsReducer from "./store/reducers/MessageReducer";
 
 const rootReducer = combineReducers({
-    products: productsReducer,
+    messages: productsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
