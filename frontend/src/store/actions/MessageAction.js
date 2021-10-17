@@ -20,7 +20,7 @@ export const fetchMessages = () => {
     return async dispatch => {
         try {
             dispatch(fetchMessagesRequest());
-            const response = await axios.get('http://localhost:8000/products');
+            const response = await axios.get('http://localhost:8000/messages');
             dispatch(fetchMessagesSuccess(response.data));
         } catch (e) {
             dispatch(fetchMessagesFailure());
@@ -29,12 +29,12 @@ export const fetchMessages = () => {
 };
 
 
-export const createMessage= productData => {
+export const createMessage = messageData => {
     return async dispatch => {
         try {
             dispatch(createMessageRequest());
 
-            await axios.post('http://localhost:8000/products', productData);
+            await axios.post('http://localhost:8000/messages', messageData);
 
             dispatch(createMessageSuccess());
         } catch (e) {

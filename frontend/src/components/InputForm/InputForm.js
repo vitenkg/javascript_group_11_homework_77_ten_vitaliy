@@ -15,18 +15,20 @@ const InputForm = ({onSubmit}) => {
     const classes = useStyles();
 
     const [state, setState] = useState({
-        Author: "",
+        author: "",
         text: "",
         image: null,
     });
 
     const submitFormHandler = e => {
         e.preventDefault();
+
         const formData = new FormData();
         Object.keys(state).forEach(key => {
             formData.append(key, state[key]);
         });
 
+        console.log(state);
         onSubmit(formData);
     };
 
@@ -60,9 +62,9 @@ const InputForm = ({onSubmit}) => {
                 <TextField
                     fullWidth
                     variant="outlined"
-                    label="Title"
-                    name="title"
-                    value={state.title}
+                    label="Автор"
+                    name="author"
+                    value={state.author}
                     onChange={inputChangeHandler}
                 />
             </Grid>
@@ -70,24 +72,12 @@ const InputForm = ({onSubmit}) => {
             <Grid item xs>
                 <TextField
                     fullWidth
+                    required
                     variant="outlined"
-                    type="number"
-                    label="Price"
-                    name="price"
-                    value={state.price}
-                    onChange={inputChangeHandler}
-                />
-            </Grid>
-
-            <Grid item xs>
-                <TextField
-                    fullWidth
-                    multiline
-                    rows={3}
-                    variant="outlined"
-                    label="Description"
-                    name="description"
-                    value={state.description}
+                    type="text"
+                    label="текст"
+                    name="text"
+                    value={state.text}
                     onChange={inputChangeHandler}
                 />
             </Grid>

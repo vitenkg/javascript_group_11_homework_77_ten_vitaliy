@@ -29,7 +29,7 @@ const Messages = () => {
                         key={message.id}
                         id={message.id}
                         author={message.author}
-                        test={message.text}
+                        text={message.text}
                         image={message.image}
                     />
                 ))}
