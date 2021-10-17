@@ -1,7 +1,7 @@
 const fs = require('fs');
 const {nanoid} = require("nanoid");
 
-const filename = '../messagesServer.json';
+const filename = './messagesServer.json';
 let data = [];
 
 module.exports = {
@@ -14,32 +14,8 @@ module.exports = {
       data = [];
     }
   },
-  getMessage(datetime) {
-    let lastMsg = [];
-    const oldMsg = [...data];
-    for (let i = 0; i < data.length; i++) {
-
-      if (data[i].datetime === datetime) {
-        oldMsg.splice(0, i+1);
-      }
-    };
-    lastMsg = [...oldMsg];
-
-    if (lastMsg === undefined) {
-      lastMsg = [];
-    }
-
-    return lastMsg;
-  },
   getMessages() {
-
-    if (data.length <= 30) {
       return data;
-    } else {
-      const eraseElements = data.length - 30;
-      return data.splice(0, eraseElements);
-    }
-
   },
   addMessage(mess) {
     mess.id = nanoid();
@@ -56,6 +32,9 @@ module.exports = {
   save() {
     console.log('file was saved');
     fs.writeFileSync(filename, JSON.stringify(data));
+  },
+  add(data) {
+    fs.appendFileSync(filename, JSON.stringify(data));
   }
 
 };
